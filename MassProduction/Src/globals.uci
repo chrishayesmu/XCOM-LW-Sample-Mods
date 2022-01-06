@@ -1,0 +1,4 @@
+`include(XComGame\Globals.uci);
+
+`define MP_LOG(msg, cond) `LOG(`msg, `cond, 'MassProductionMod')
+`define MP_LOG_CLS(msg, cond) `LOG(string(Class) $ ": " $ `msg, `cond, 'MassProductionMod')

@@ -1,0 +1,4 @@
+`include(XComGame\Globals.uci);
+
+`define AR_LOG(msg, cond) `LOG(`msg, `cond, 'ArtifactRepairMod')
+`define AR_LOG_CLS(msg, cond) `LOG(string(Class) $ ": " $ `msg, `cond, 'ArtifactRepairMod')

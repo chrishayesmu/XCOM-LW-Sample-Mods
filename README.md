@@ -8,6 +8,17 @@ To install these mods from source, follow the same instructions as for building 
 
 Prebuilt versions will be available at a later date.
 
+## Artifact Repair
+
+**Artifact Repair** introduces some new Engineering capabilities, allowing the player to repair damaged alien artifacts: computers, power sources, surgeries, stasis tanks, and alien entertainments.
+
+This mod demonstrates:
+
+* Adding new items to the game.
+* Using `HL_TItem.iReplacementItemId` to create new Engineering "recipes" to build existing items in new ways.
+
+Note that these items all have a research prerequisite, so you won't see them in Engineering right away.
+
 ## Mass Production
 
 **Mass Production** is a simple mod which makes certain items infinite after you've built enough of them. For example, once you've built 3 Laser Rifles, you now have all the Laser Rifles you want without building more. In addition, new soldiers will be automatically equipped with the highest tier weapons that you are mass producing, including blueshirts on base defenses.

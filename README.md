@@ -1,6 +1,6 @@
 # Long War Sample Mods
 
-These mods serve as an example of how to perform various tasks within the Highlander modding framework. While they are all fully functional in-game, they are not heavily playtested or balanced.
+These mods serve as an example of how to perform various tasks within the Long War: Community Edition modding framework. While they are all fully functional in-game, they are not heavily playtested or balanced.
 
 ## Installation
 
@@ -15,7 +15,7 @@ Prebuilt versions will be available at a later date.
 This mod demonstrates:
 
 * Adding new items to the game.
-* Using `HL_TItem.iReplacementItemId` to create new Engineering "recipes" to build existing items in new ways.
+* Using `LWCE_TItem.iReplacementItemId` to create new Engineering "recipes" to build existing items in new ways.
 
 Note that these items all have a research prerequisite, so you won't see them in Engineering right away.
 
@@ -25,7 +25,7 @@ Note that these items all have a research prerequisite, so you won't see them in
 
 This mod demonstrates:
 
-* Overriding the `HL_GetItem` function results based on dynamic logic.
+* Overriding the `LWCE_GetItem` function results based on dynamic logic.
 * Overriding the default primary and secondary weapons for new soldiers.
 * Showing a Geoscape alert to the player.
 

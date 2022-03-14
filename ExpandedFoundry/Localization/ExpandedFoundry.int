@@ -1,0 +1,12 @@
+[ExpandedFoundryMod]
+FoundryNames[0]="Elerium Batteries"
+FoundrySummaries[0]="While we don't fully understand the alien material called \"elerium\", the engineering team believes we can combine a sample of it with our existing batteries. This should provide benefits for our Motion Trackers and Battle Scanners."
+
+FoundryNames[1]="Reconnaissance Tools"
+FoundrySummaries[1]="Our recent work on improving ammo capacity in soldiers' armor has led to some ideas about miniaturization in general. We could create a single-use version of the Motion Tracker which is small enough to integrate into our lighter body armors."
+
+FoundryNames[2]="Improved Medikit II"
+FoundrySummaries[2]="By reproducing how the Chryssalid creature is able to rapidly heal in combat situations, we can upgrade our Medikits to get our wounded soldiers back in the fight instead of waiting for evac."
+
+FoundryNames[3]="Rechargeable Trackers"
+FoundrySummaries[3]="We can replace the batteries in our Motion Trackers with an elerium-based design of almost unlimited capacity. However, the battery will require some time to cool off between uses."

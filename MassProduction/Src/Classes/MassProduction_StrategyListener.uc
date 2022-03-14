@@ -1,8 +1,8 @@
-class MassProduction_StrategyListener extends HighlanderStrategyListener;
+class MassProduction_StrategyListener extends LWCEStrategyListener;
 
 var private array<int> arrOutstandingAlerts;
 
-function Override_GetItem(out HL_TItem kItem, int iTransactionType)
+function Override_GetItem(out LWCE_TItem kItem, int iTransactionType)
 {
     kItem.bIsInfinite = kItem.bIsInfinite || IsMassProducible(kItem);
 }
@@ -60,18 +60,18 @@ function bool Override_GetInfiniteSecondary(XGStrategySoldier kSoldier, out int 
     return false;
 }
 
-function OnItemCompleted(HL_TItemProject kItemProject, int iQuantity, optional bool bInstant)
+function OnItemCompleted(LWCE_TItemProject kItemProject, int iQuantity, optional bool bInstant)
 {
     local int iAlertId, iCurrentQuantity, iPreviousQuantity, iThreshold;
-    local Highlander_XGGeoscape kGeoscape;
-    local Highlander_XGStorage kStorage;
-    local HL_TItem kItem;
+    local LWCE_XGGeoscape kGeoscape;
+    local LWCE_XGStorage kStorage;
+    local LWCE_TItem kItem;
 
-    kGeoscape = `HL_GEOSCAPE;
-    kStorage = `HL_STORAGE;
-    kItem = `HL_ITEM(kItemProject.iItemId);
+    kGeoscape = `LWCE_GEOSCAPE;
+    kStorage = `LWCE_STORAGE;
+    kItem = `LWCE_ITEM(kItemProject.iItemId);
 
-    iCurrentQuantity = `HL_UTILS.GetItemQuantity(kStorage.m_arrHLItemArchives, kItemProject.iItemId).iQuantity;
+    iCurrentQuantity = `LWCE_UTILS.GetItemQuantity(kStorage.m_arrCEItemArchives, kItemProject.iItemId).iQuantity;
     iPreviousQuantity = iCurrentQuantity - iQuantity;
     iThreshold = GetMassProductionThreshold(kItem);
 
@@ -87,7 +87,7 @@ function OnItemCompleted(HL_TItemProject kItemProject, int iQuantity, optional b
     }
 
     // Trigger a Geoscape alert to inform the player that they've hit the threshold; store the alert ID
-    // so that we recognize it when the Highlander calls us to populate the alert data
+    // so that we recognize it when LWCE calls us to populate the alert data
     iAlertId = kGeoscape.Mod_Alert(kGeoscape.MakeAlert(0, kItem.iItemId));
     arrOutstandingAlerts.AddItem(iAlertId);
 }
@@ -95,7 +95,7 @@ function OnItemCompleted(HL_TItemProject kItemProject, int iQuantity, optional b
 function PopulateAlert(int iAlertId, TGeoscapeAlert kGeoAlert, out TMCAlert kAlert)
 {
     local int iItemId, Index;
-    local HL_TItem kItem;
+    local LWCE_TItem kItem;
     local TText txtTemp;
     local TMenuOption kReply;
 
@@ -109,7 +109,7 @@ function PopulateAlert(int iAlertId, TGeoscapeAlert kGeoAlert, out TMCAlert kAle
     arrOutstandingAlerts.Remove(Index, 1);
 
     iItemId = kGeoAlert.arrData[0];
-    kItem = `HL_ITEM(iItemId);
+    kItem = `LWCE_ITEM(iItemId);
 
     // TODO: localize
     kAlert.txtTitle.StrValue = "Mass Production Unlocked";
@@ -127,7 +127,7 @@ function PopulateAlert(int iAlertId, TGeoscapeAlert kGeoAlert, out TMCAlert kAle
     kAlert.mnuReplies.arrOptions.AddItem(kReply);
 }
 
-function bool IsMassProducible(HL_TItem kItem)
+function bool IsMassProducible(LWCE_TItem kItem)
 {
     local int iCurrentQuantity, iThreshold;
 
@@ -150,7 +150,7 @@ function bool IsMassProducible(HL_TItem kItem)
         return false;
     }
 
-    iCurrentQuantity = `HL_UTILS.GetItemQuantity(`HL_STORAGE.m_arrHLItemArchives, kItem.iItemId).iQuantity;
+    iCurrentQuantity = `LWCE_UTILS.GetItemQuantity(`LWCE_STORAGE.m_arrCEItemArchives, kItem.iItemId).iQuantity;
 
     return iCurrentQuantity >= iThreshold;
 }
@@ -160,7 +160,7 @@ protected function int FirstMassProducibleOf(int Id1, int Id2, int Id3 = 0, int 
 {
     local int Id;
     local array<int> arrIds;
-    local HL_TItem kItem;
+    local LWCE_TItem kItem;
 
     arrIds.AddItem(Id1);
     arrIds.AddItem(Id2);
@@ -174,7 +174,7 @@ protected function int FirstMassProducibleOf(int Id1, int Id2, int Id3 = 0, int 
             continue;
         }
 
-        kItem = `HL_ITEM(Id);
+        kItem = `LWCE_ITEM(Id);
 
         if (IsMassProducible(kItem))
         {
@@ -185,12 +185,12 @@ protected function int FirstMassProducibleOf(int Id1, int Id2, int Id3 = 0, int 
     return 0;
 }
 
-protected function int GetMassProductionThreshold(HL_TItem kItem)
+protected function int GetMassProductionThreshold(LWCE_TItem kItem)
 {
-    local Highlander_XGItemTree kItemTree;
-    local HL_TItemQuantity kCustomThreshold;
+    local LWCE_XGItemTree kItemTree;
+    local LWCE_TItemQuantity kCustomThreshold;
 
-    kItemTree = `HL_ITEMTREE;
+    kItemTree = `LWCE_ITEMTREE;
 
     foreach class'MassProductionMod'.default.arrProductionThresholdOverrides(kCustomThreshold)
     {

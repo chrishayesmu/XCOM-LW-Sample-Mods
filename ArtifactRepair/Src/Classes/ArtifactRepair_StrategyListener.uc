@@ -1,8 +1,8 @@
-class ArtifactRepair_StrategyListener extends HighlanderStrategyListener;
+class ArtifactRepair_StrategyListener extends LWCEStrategyListener;
 
-function OnItemsBuilt(out array<HL_TItem> arrItems)
+function OnItemsBuilt(out array<LWCE_TItem> arrItems)
 {
-    local HL_TItem kItem;
+    local LWCE_TItem kItem;
 
     foreach class'ArtifactRepairMod'.default.arrRepairItems(kItem)
     {

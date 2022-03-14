@@ -1,7 +1,7 @@
-class ArtifactRepairMod extends HighlanderModBase
+class ArtifactRepairMod extends LWCEModBase
     config(ArtifactRepairMod);
 
-var config array<HL_TItem> arrRepairItems;
+var config array<LWCE_TItem> arrRepairItems;
 
 defaultproperties
 {

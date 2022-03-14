@@ -1,11 +1,11 @@
-class MassProductionMod extends HighlanderModBase
+class MassProductionMod extends LWCEModBase
     config(MassProductionMod);
 
 var config int iProductionThresholdGeneral;
 var config int iProductionThresholdArmor;
 var config int iProductionThresholdSmallItems;
 var config int iProductionThresholdWeapons;
-var config array<HL_TItemQuantity> arrProductionThresholdOverrides;
+var config array<LWCE_TItemQuantity> arrProductionThresholdOverrides;
 
 defaultproperties
 {

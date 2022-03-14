@@ -1,0 +1,4 @@
+`include(XComGame\Globals.uci);
+
+`define EF_LOG(msg, cond) `LOG(`msg, `cond, 'ExpandedFoundryMod')
+`define EF_LOG_CLS(msg, cond) `LOG(string(Class) $ ": " $ `msg, `cond, 'ExpandedFoundryMod')
